@@ -2,34 +2,25 @@
 
 const gulp = require('gulp')
 const browserSync = require('browser-sync').create()
-const nodemon = require('gulp-nodemon')
 const browserify = require('browserify')
 const babelify = require('babelify')
-const reactify = require('reactify')
 const fs = require('fs')
-const watchify = require('watchify')
 const uglify = require('gulp-uglify')
 const sass = require('gulp-sass')
-const concat = require('gulp-concat')
-const buffer = require('vinyl-buffer')
-const source = require('vinyl-source-stream')
-const traceur = require('gulp-traceur')
-const gutil = require('gulp-util')
 const rename = require('gulp-rename')
-const sourcemaps = require('gulp-sourcemaps')
 const reload = browserSync.reload
 
 gulp.task('js', ['babel'], () => {
-  return gulp.src('./public/js/minified/bundle.js')
-    .pipe(uglify())
-    .pipe(rename('bundle.min.js'))
-    .pipe(gulp.dest('public/js/minified'))
-    .pipe(browserSync.reload({
-        stream: true
-    }))
+    return gulp.src('./public/js/minified/bundle.js')
+        .pipe(uglify())
+        .pipe(rename('bundle.min.js'))
+        .pipe(gulp.dest('public/js/minified'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 })
 
-gulp.task('babel', (done) => {
+gulp.task('babel', () => {
     return browserify('./public/js/main.js')
         .transform(babelify.configure({
             presets: ["es2015"]
