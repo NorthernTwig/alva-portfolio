@@ -15,36 +15,27 @@ const buffer = require('vinyl-buffer')
 const source = require('vinyl-source-stream')
 const traceur = require('gulp-traceur')
 const gutil = require('gulp-util')
+const rename = require('gulp-rename')
 const sourcemaps = require('gulp-sourcemaps')
 const reload = browserSync.reload
 
-// gulp.task('js', () => {
-//
-//   let b = browserify({
-//     entries: './public/js/main.js',
-//     debug: true,
-//     transform: ['es2015']
-//   })
-//
-//   return b.bundle()
-//   //     .transform('babelify', {
-//   //         presets: ['es2015']
-//   //     })
-//   .pipe(source('main.js'))
-//   .pipe(buffer())
-//   .pipe(uglify())
-//   .pipe(sourcemaps.init({loadMaps: true}))
-//   .pipe(gulp.dest('./public/js/minified'))
-//
-// })
+gulp.task('js', ['babel'], () => {
+  return gulp.src('./public/js/minified/bundle.js')
+    .pipe(uglify())
+    .pipe(rename('bundle.min.js'))
+    .pipe(gulp.dest('public/js/minified'))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
+})
 
-gulp.task('babel', () => {
-    browserify('./public/js/main.js')
+gulp.task('babel', (done) => {
+    return browserify('./public/js/main.js')
         .transform(babelify.configure({
             presets: ["es2015"]
         }))
         .bundle()
-        .pipe(fs.createWriteStream('./public/js/minified/bundle.min.js'));
+        .pipe(fs.createWriteStream('./public/js/minified/bundle.js'))
 })
 
 gulp.task('sass', () => {
@@ -58,12 +49,12 @@ gulp.task('sass', () => {
         }))
 })
 
-gulp.task('watch-js', ['babel'], (done) => {
+gulp.task('watch-js', ['js'], (done) => {
     browserSync.reload()
     done()
 })
 
-gulp.task('browser-sync', ['babel', 'sass'], () => {
+gulp.task('browser-sync', ['js', 'sass'], () => {
     browserSync.init({
         proxy: 'http://localhost:3000',
         files: ['public/**/*.*'],

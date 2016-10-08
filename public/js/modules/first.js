@@ -1,5 +1,5 @@
 const test = () => {
-  console.log('hoppsan');
-};
+  console.log('The test has begun')
+}
 
-export default test;
+export default recolor

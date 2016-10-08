@@ -1,2 +1,2 @@
-import test from './modules/first'
-test()
+import recolor from './modules/first'
+recolor()
