@@ -1,50 +1,35 @@
 {
   "name": "bike-slushe",
   "version": "1.0.0",
-  "description": "A personal setup with gulp",
+  "description": "A personal setup",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "#"
+    "url": "git+https://github.com/NorthernTwig/bike-slushe.git"
   },
   "keywords": [
-    "gulp",
     "handlebars",
-    "template",
+    "gulp",
     "sass",
-    "scss"
+    "express",
+    "babel"
   ],
   "author": "Oscar Nordquist",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NorthernTwig/bike-slushe/issues"
+  },
+  "homepage": "https://github.com/NorthernTwig/bike-slushe#readme",
   "devDependencies": {
-    "babel-core": "^6.17.0",
     "babel-preset-es2015": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
     "babelify": "^7.3.0",
-    "browser-sync": "^2.17.0",
-    "exec-promise": "^0.6.1",
+    "browserify": "^13.1.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-browserify": "^0.5.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-exec": "^2.1.2",
-    "gulp-nodemon": "^2.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-traceur": "^0.17.2",
-    "reactify": "^1.1.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
-  },
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "express-handlebars": "^3.0.0",
-    "express-session": "^1.14.1"
+    "gulp-uglify": "^2.0.0"
   }
 }
