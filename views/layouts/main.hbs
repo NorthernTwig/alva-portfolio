@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#242F49" />
-  <link rel="stylesheet" href="./css/sassy.css">
-  <!-- Oscar Nordquist -->
-  <title>Manfred Ohlsson</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Oscar Nordquist</title>
 </head>
-<body class="top">
 
-
-  {{> nav}}
-
-  {{> admin}}
-
+<body>
   {{> header}}
+    {{{body}}}
 
-
-  {{{body}}}
-
-  <script src="./javascript/nowBrowserified.js"></script>
-  {{#if loggedIn}}
-  <script src="./javascript/admin.js"></script>
-  {{/if}}
+    <script src="./js/minified/main.js"></script>
 </body>
+
 </html>

@@ -1,7 +1,5 @@
-"use strict";
+'use strict'
 
-const express = require("./config/express");
-const mongo = require("./config/mongo");
+const express = require('./config/express')
 
-express();
-mongo();
+express()

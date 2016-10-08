@@ -1,1 +1,1 @@
-# Portfolio from scraping Vimeo
+# A personal setup
