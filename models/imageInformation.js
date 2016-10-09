@@ -5,10 +5,7 @@ const Schema = mongoose.Schema
 
 const imageInformation = mongoose.Schema({
     source: {
-        type: String
-    },
-    description: {
-      type: String
+        type: Array
     }
 })
 
