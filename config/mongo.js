@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose")
 const db = mongoose.connection
-const DATABASE_NAME = 'example'
+const DATABASE_NAME = 'alvanordquistfoto'
 
 module.exports = () => {
 
@@ -14,7 +14,7 @@ module.exports = () => {
 
     // On error
     db.on("error", err => {
-      console.log(err)
+        console.log(err)
         console.log("Mongo could not establish connection.")
     })
 

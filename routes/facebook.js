@@ -1,12 +1,13 @@
 const graph = require('fbgraph')
 const secret = require('../config/secret/facebook_secret')
+const imageInformation = require("../models/imageInformation.js");
 
 module.exports = () => {
 
     let token = graph.setAccessToken(secret.ACCESS_TOKEN)
-    let portfolioPage = "alvanordquistfoto/photos?fields=images&limit=500&type=uploaded"
-    let imageInfoArray = []
-    let counter = 0
+    let pageName = 'alvanordquistfoto'
+    let imageLimit = '500'
+    let portfolioPage = pageName + '/photos?fields=images&limit=' + imageLimit +  '&type=uploaded'
 
     const getImages = () => {
         return new Promise((resolve, reject) => {
