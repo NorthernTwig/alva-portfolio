@@ -5,11 +5,16 @@ var _first = require('./modules/first');
 
 var _first2 = _interopRequireDefault(_first);
 
+var _transition = require('./modules/transition');
+
+var _transition2 = _interopRequireDefault(_transition);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _first2.default)();
+var transTest = new _transition2.default();
+transTest.initialize();
 
-},{"./modules/first":2}],2:[function(require,module,exports){
+},{"./modules/first":2,"./modules/transition":3}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20,5 +25,44 @@ var test = function test() {
 };
 
 exports.default = test;
+
+},{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var transition = function () {
+    function transition() {
+        _classCallCheck(this, transition);
+
+        this.header = document.querySelector('.header-wrapper');
+        this.portfolio = document.querySelector('.portfolio-wrapper');
+        this.navLinkPortfolio = document.querySelectorAll('.portfolio-link');
+    }
+
+    _createClass(transition, [{
+        key: 'initialize',
+        value: function initialize() {
+            this.navLinkPortfolio[0].addEventListener('click', this.move.bind(this));
+            this.navLinkPortfolio[1].addEventListener('click', this.move.bind(this));
+        }
+    }, {
+        key: 'move',
+        value: function move() {
+            this.header.classList.toggle('slide-left');
+            this.portfolio.classList.toggle('negative-slide-left');
+        }
+    }]);
+
+    return transition;
+}();
+
+exports.default = transition;
 
 },{}]},{},[1]);
