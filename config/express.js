@@ -37,9 +37,12 @@ module.exports = () => {
 
     app.use(express.static('public'))
 
-    facebook()
+
+    //Activate when done bae <3
+    // facebook()
 
     app.use('/', require('../routes/home'))
+    app.use('/', require('../routes/imageApi'))
 
     app.use('*', (req, res) => {
         return res.redirect('/')

@@ -1,4 +1,4 @@
-class transition {
+class Transition {
 
     constructor() {
         this.header = document.querySelector('.header-wrapper')
@@ -18,4 +18,4 @@ class transition {
 
 }
 
-export default transition
+export default Transition
