@@ -1,3 +1,4 @@
-config/secret/session-secret.js
+config/secret/session_secret.js
+config/secret/facebook_secret.js
 config/mongo.js
 node_modules

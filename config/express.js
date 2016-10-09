@@ -6,7 +6,8 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const app = express()
 const PORT = 3000
-const secret = require('./secret/session-secret.js')
+const secret = require('./secret/session_secret.js')
+const facebook = require('../routes/facebook')
 
 module.exports = () => {
 
@@ -35,6 +36,8 @@ module.exports = () => {
     app.set('view engine', '.hbs')
 
     app.use(express.static('public'))
+
+    facebook()
 
     app.use('/', require('../routes/home'))
 
