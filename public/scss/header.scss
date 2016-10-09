@@ -4,7 +4,8 @@ $header-size: 10vw;
 .header-wrapper {
     width: 100%;
     height: 100vh;
-    background-color: rgba(255,0,0,0.52);
+    //BC9EC1164,232,223
+    background-color: rgba(164, 232, 223, 0.52);
     float: left;
     position: absolute;
     top: 0;
@@ -22,6 +23,8 @@ $header-size: 10vw;
     background-image: url('https://scontent-ams3-1.xx.fbcdn.net/t31.0-8/14125589_539678692907044_428672934665808587_o.jpg');
     background-size: cover;
     background-position: center center;
+    filter: grayscale(70%);
+    -webkit-filter: grayscale(70%);
 }
 
 .header-text-container {
@@ -35,4 +38,6 @@ $header-size: 10vw;
     color: $color;
     font-size: $header-size;
     text-align: center;
+    font-weight: 300;
+    font-family: 'Merriweather', serif;
 }
