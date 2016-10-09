@@ -15,7 +15,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var transTest = new _Transition2.default();
 transTest.initialize();
-var init = new _GenerateSquare.Initializer(5, 2000, 'http://localhost:5000/images');
+
+fetch('http://localhost:5000/images').then(function (response) {
+    return response.clone();
+}).then(function (cloned) {
+    return cloned.json();
+}).then(function (res) {
+    var init = new _GenerateSquare.Initializer(3, res.length, 'http://localhost:5000/images');
+});
 
 },{"./modules/GenerateSquare":2,"./modules/Transition":3,"./modules/first":4}],2:[function(require,module,exports){
 'use strict';
@@ -93,7 +100,7 @@ var ScrollChecker = function () {
         this.rowAmount = 1;
         this.squareAmount = 3;
         this.pre = 3;
-        this.imageAmountLimit = 25;
+        this.imageAmountLimit = 10;
     }
 
     _createClass(ScrollChecker, [{

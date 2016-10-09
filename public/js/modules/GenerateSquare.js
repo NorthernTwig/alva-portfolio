@@ -54,7 +54,7 @@ class ScrollChecker {
         this.rowAmount = 1
         this.squareAmount = 3
         this.pre = 3
-        this.imageAmountLimit = 25
+        this.imageAmountLimit = 10
     }
 
     initialize(squaresPerRow, imageAmountLimit) {
@@ -137,7 +137,6 @@ class ImageCollection {
                 squareImage.classList.add('display')
             })
             .catch(() => console.log(response.text))
-
     }
 
 }

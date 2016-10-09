@@ -33,18 +33,18 @@ module.exports = () => {
     const getImageSources = (imageArray) => {
         let imagesWithBestResolution = []
         for(image of imageArray) {
-            imagesWithBestResolution.push(image[0].source)
+            imagesWithBestResolution.push(image[image.length - 1].source)
         }
         return imagesWithBestResolution
     }
 
     const findImageDatabase = (imagesWithBestResolution) => {
         imageInformation.findOne({})
-        .then(imageDatabase => {
-            imageDatabase.source = imagesWithBestResolution
-            imageDatabase.save()
-        })
-        .catch(err => console.log(err))
+            .then(imageDatabase => {
+                imageDatabase.source = imagesWithBestResolution
+                imageDatabase.save()
+            })
+            .catch(err => console.log(err))
     }
 
     getImageInformation()
