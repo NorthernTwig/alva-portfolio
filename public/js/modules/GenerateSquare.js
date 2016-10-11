@@ -47,19 +47,21 @@ class GenerateSquare {
 
 class ScrollChecker {
 
-    constructor(link) {
+    constructor(imageJson) {
         this.container = document.querySelector('.image-container')
         this.gS = new GenerateSquare()
-        this.iC = new ImageCollection(link)
+        this.iC = new ImageCollection(imageJson)
         this.rowAmount = 1
         this.squareAmount = 3
         this.pre = 3
+        this.link = ''
         this.imageAmountLimit = 10
     }
 
-    initialize(squaresPerRow, imageAmountLimit) {
+    initialize(squaresPerRow, imageAmountLimit, link) {
         this.squareAmount = squaresPerRow
         this.imageAmountLimit = imageAmountLimit
+        this.link = link
 
         this.initializeListener()
         for(let i = 0; i < this.pre; i++) {
@@ -114,9 +116,9 @@ class ScrollChecker {
 
 class ImageCollection {
 
-    constructor(link) {
-        this.link = link
+    constructor(images) {
         this.currentAmountOfImages = 0
+        this.images = images
     }
 
     initialize(imageAddAmount) {
@@ -128,26 +130,28 @@ class ImageCollection {
 
     getImages(squareIndex) {
         let squareImage = document.querySelectorAll('.square')[squareIndex]
+        squareImage.style.backgroundImage = 'url(' + this.images[squareIndex] + ')'
 
-        fetch(this.link)
-            .then(response => response.clone())
-            .then(cloned => cloned.json())
-            .then(imageJson => {
-                squareImage.style.backgroundImage = 'url(' + imageJson[squareIndex] + ')'
-                squareImage.classList.add('display')
-            })
-            .catch(() => console.log(response.text))
+        setTimeout(() => {
+            squareImage.classList.add('display')
+        }, 350)
+
     }
 
 }
 
 class Initializer {
 
-    constructor(squaresPerRow, imageAmountLimit, link) {
-        const sC = new ScrollChecker(link)
-        sC.initialize(squaresPerRow, imageAmountLimit)
+    constructor(squaresPerRow, link) {
+        fetch(link)
+            .then(response => response.clone())
+            .then(cloned => cloned.json())
+            .then(imageJson => {
+                let sC = new ScrollChecker(imageJson)
+                sC.initialize(squaresPerRow, imageJson.length, imageJson)
+            })
+            .catch(() => console.log(response.text))
     }
-
 }
 
 export {

@@ -39,7 +39,7 @@ module.exports = () => {
 
 
     //Activate when done bae <3
-    facebook()
+    // facebook()
 
     app.use('/', require('../routes/home'))
     app.use('/', require('../routes/imageApi'))

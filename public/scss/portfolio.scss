@@ -1,9 +1,16 @@
 .portfolio-wrapper {
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.1);
+  background-color: #FEF9FF;
   position: absolute;
   top: 0;
   right: -100%;
   transition: right 1s;
+  display: flex;
+  flex-flow: column;
+}
+
+.portfolio-header {
+    color: #9AC2C9;
+    margin-top: 22px;
 }

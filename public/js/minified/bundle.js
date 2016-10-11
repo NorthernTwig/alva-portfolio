@@ -16,13 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var transTest = new _Transition2.default();
 transTest.initialize();
 
-fetch('http://localhost:5000/images').then(function (response) {
-    return response.clone();
-}).then(function (cloned) {
-    return cloned.json();
-}).then(function (res) {
-    var init = new _GenerateSquare.Initializer(3, res.length, 'http://localhost:5000/images');
-});
+var init = new _GenerateSquare.Initializer(3, 'http://localhost:5000/images');
 
 },{"./modules/GenerateSquare":2,"./modules/Transition":3,"./modules/first":4}],2:[function(require,module,exports){
 'use strict';
@@ -91,23 +85,25 @@ var GenerateSquare = function () {
 }();
 
 var ScrollChecker = function () {
-    function ScrollChecker(link) {
+    function ScrollChecker(imageJson) {
         _classCallCheck(this, ScrollChecker);
 
         this.container = document.querySelector('.image-container');
         this.gS = new GenerateSquare();
-        this.iC = new ImageCollection(link);
+        this.iC = new ImageCollection(imageJson);
         this.rowAmount = 1;
         this.squareAmount = 3;
         this.pre = 3;
+        this.link = '';
         this.imageAmountLimit = 10;
     }
 
     _createClass(ScrollChecker, [{
         key: 'initialize',
-        value: function initialize(squaresPerRow, imageAmountLimit) {
+        value: function initialize(squaresPerRow, imageAmountLimit, link) {
             this.squareAmount = squaresPerRow;
             this.imageAmountLimit = imageAmountLimit;
+            this.link = link;
 
             this.initializeListener();
             for (var i = 0; i < this.pre; i++) {
@@ -169,11 +165,11 @@ var ScrollChecker = function () {
 }();
 
 var ImageCollection = function () {
-    function ImageCollection(link) {
+    function ImageCollection(images) {
         _classCallCheck(this, ImageCollection);
 
-        this.link = link;
         this.currentAmountOfImages = 0;
+        this.images = images;
     }
 
     _createClass(ImageCollection, [{
@@ -188,28 +184,30 @@ var ImageCollection = function () {
         key: 'getImages',
         value: function getImages(squareIndex) {
             var squareImage = document.querySelectorAll('.square')[squareIndex];
+            squareImage.style.backgroundImage = 'url(' + this.images[squareIndex] + ')';
 
-            fetch(this.link).then(function (response) {
-                return response.clone();
-            }).then(function (cloned) {
-                return cloned.json();
-            }).then(function (imageJson) {
-                squareImage.style.backgroundImage = 'url(' + imageJson[squareIndex] + ')';
+            setTimeout(function () {
                 squareImage.classList.add('display');
-            }).catch(function () {
-                return console.log(response.text);
-            });
+            }, 350);
         }
     }]);
 
     return ImageCollection;
 }();
 
-var Initializer = function Initializer(squaresPerRow, imageAmountLimit, link) {
+var Initializer = function Initializer(squaresPerRow, link) {
     _classCallCheck(this, Initializer);
 
-    var sC = new ScrollChecker(link);
-    sC.initialize(squaresPerRow, imageAmountLimit);
+    fetch(link).then(function (response) {
+        return response.clone();
+    }).then(function (cloned) {
+        return cloned.json();
+    }).then(function (imageJson) {
+        var sC = new ScrollChecker(imageJson);
+        sC.initialize(squaresPerRow, imageJson.length, imageJson);
+    }).catch(function () {
+        return console.log(response.text);
+    });
 };
 
 exports.GenerateSquare = GenerateSquare;

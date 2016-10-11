@@ -1,5 +1,5 @@
-$color: white;
-$header-size: 10vw;
+$color: #FEF9FF;
+$header-size: 3vw;
 
 .header-wrapper {
     width: 100%;
@@ -20,11 +20,7 @@ $header-size: 10vw;
     top: 0;
     left: 0;
     z-index: -1;
-    background-image: url('https://scontent-ams3-1.xx.fbcdn.net/t31.0-8/14125589_539678692907044_428672934665808587_o.jpg');
-    background-size: cover;
-    background-position: center center;
-    filter: grayscale(70%);
-    -webkit-filter: grayscale(70%);
+    background-color: #9AC2C9;
 }
 
 .header-text-container {
@@ -40,4 +36,9 @@ $header-size: 10vw;
     text-align: center;
     font-weight: 300;
     font-family: 'Merriweather', serif;
+}
+
+.sub-header-text {
+    font-size: 2vw;
+    font-family: 'Oswald', sans-serif;
 }
