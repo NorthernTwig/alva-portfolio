@@ -1,7 +1,3 @@
-'use strict'
-
-// Github: https://github.com/NorthernTwig/forever-scroll
-
 class GenerateSquare {
 
     constructor() {

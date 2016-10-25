@@ -1,0 +1,30 @@
+.nav {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 25px;
+    // opacity: 0;
+}
+
+.nav-display {
+    margin-top: 55px;
+    opacity: 1;
+    transition-timing-function: ease-out;
+    transition: all 250ms;
+}
+
+.nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.4);
+    transition: color 250ms;
+}
+
+.nav a:hover {
+    transition: color 100ms;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.nav p {
+
+    color: rgba(0, 0, 0, 0.4);
+}
