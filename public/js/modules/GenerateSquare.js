@@ -45,6 +45,7 @@ class ScrollChecker {
 
     constructor(imageJson) {
         this.container = document.querySelector('.image-container')
+        this.body = document.querySelector('body')
         this.gS = new GenerateSquare()
         this.iC = new ImageCollection(imageJson)
         this.rowAmount = 1
@@ -66,7 +67,7 @@ class ScrollChecker {
     }
 
     initializeListener() {
-        this.container.addEventListener('scroll', this.generateMoreSquares.bind(this))
+        window.addEventListener('scroll', this.generateMoreSquares.bind(this))
     }
 
     countSquares() {
@@ -101,7 +102,7 @@ class ScrollChecker {
     }
 
     getBottomPosition() {
-        return this.container.scrollTop + screen.height
+        return window.scrollY + screen.height
     }
 
     setImageLimit() {

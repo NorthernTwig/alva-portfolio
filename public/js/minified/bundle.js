@@ -14,10 +14,10 @@ var _GenerateSquare = require('./modules/GenerateSquare');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var animationInitializer = new _AnimationInitializer2.default();
-var transTest = new _Transition2.default();
-transTest.initialize();
+// const transTest = new Transition()
+// transTest.initialize()
 
-var init = new _GenerateSquare.Initializer(4, 'http://localhost:5000/images');
+var init = new _GenerateSquare.Initializer(3, 'http://localhost:5000/images');
 
 },{"./modules/GenerateSquare":2,"./modules/HeaderAnimation/AnimationInitializer":3,"./modules/Transition":6}],2:[function(require,module,exports){
 'use strict';
@@ -88,6 +88,7 @@ var ScrollChecker = function () {
         _classCallCheck(this, ScrollChecker);
 
         this.container = document.querySelector('.image-container');
+        this.body = document.querySelector('body');
         this.gS = new GenerateSquare();
         this.iC = new ImageCollection(imageJson);
         this.rowAmount = 1;
@@ -112,7 +113,7 @@ var ScrollChecker = function () {
     }, {
         key: 'initializeListener',
         value: function initializeListener() {
-            this.container.addEventListener('scroll', this.generateMoreSquares.bind(this));
+            window.addEventListener('scroll', this.generateMoreSquares.bind(this));
         }
     }, {
         key: 'countSquares',
@@ -151,7 +152,7 @@ var ScrollChecker = function () {
     }, {
         key: 'getBottomPosition',
         value: function getBottomPosition() {
-            return this.container.scrollTop + screen.height;
+            return window.scrollY + screen.height;
         }
     }, {
         key: 'setImageLimit',
@@ -273,6 +274,8 @@ var HeaderAnimator = function () {
             this.paus().then(function (done) {
                 if (_this.letters[_this.index] !== undefined) {
                     _this.beginAnimation();
+                } else {
+                    _this.displayNavigation();
                 }
             });
         }
@@ -293,6 +296,11 @@ var HeaderAnimator = function () {
         value: function addingClassToLetter() {
             this.letters[this.index].classList.add('appear');
             this.index++;
+        }
+    }, {
+        key: 'displayNavigation',
+        value: function displayNavigation() {
+            this.nav.classList.add('nav-display');
         }
     }]);
 
@@ -372,10 +380,6 @@ exports.default = SplitWord;
 },{}],6:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -406,6 +410,6 @@ var Transition = function () {
     return Transition;
 }();
 
-exports.default = Transition;
+// export default Transition
 
 },{}]},{},[1]);

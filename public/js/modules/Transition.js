@@ -18,4 +18,4 @@ class Transition {
 
 }
 
-export default Transition
+// export default Transition

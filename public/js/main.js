@@ -8,7 +8,7 @@ import {
 
 
 const animationInitializer = new AnimationInitializer()
-const transTest = new Transition()
-transTest.initialize()
+// const transTest = new Transition()
+// transTest.initialize()
 
-const init = new Initializer(4, 'http://localhost:5000/images')
+const init = new Initializer(3, 'http://localhost:5000/images')
